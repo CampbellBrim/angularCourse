@@ -1,0 +1,34 @@
+http://localhost:3000/courses
+
+###
+
+PUT http://localhost:3000/posts/2 HTTP/1.1
+content-type: application/json
+
+    {  "title": "json-servernope", "author": "typicodehuh" }
+    
+
+###
+
+POST http://localhost:3000/courses HTTP/1.1
+content-type: application/json
+
+{
+    "name": "avacado",
+    "weight": "yes"
+}
+
+###
+
+POST https://example.com/courses HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
+
+DELETE  http://localhost:3000/courses/6 HTTP/1.1
+content-type: application/json

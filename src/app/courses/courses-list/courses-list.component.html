@@ -1,0 +1,91 @@
+<!-- <p>courses-list works!</p> -->
+<!-- <div class="card mt-3">
+    <div class="card-header">
+        <div class="float-left">
+            <h4>courses</h4>
+        </div>
+        <div class="float-right">
+            <button type="button" class="btn btn-primary" [routerLink]="['novo']">Novo Curso</button>
+            <button type="button" class="btn btn-secondary" (click)="onRefresh()">Atualizar</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover" *ngIf="(courses$ | async) as courses; 
+        else loading"
+        >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>course</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses$ | async">
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.name }}</td>
+                    <td>
+                        <span class="float-right">
+                            <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(course.id)">
+                                Atualizar
+                            </button>
+
+                            <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(course)">
+                                Remover
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div> -->
+
+        <div class="card">
+            <div class="card-header">
+                <div class="float-left">
+                    <h4>courses</h4>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-primary" [routerLink]="['new']">new course</button></div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover" *ngIf="courses$ | async as courses; else loading">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>course</th>
+                        <th>price</th>
+                        <th>image</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let course of courses$ | async">
+                        <td>{{ course.id }}</td>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.price | currency }}</td>
+                        <td> 
+                            <img [src]="course.image" alt="some text" style="width: 100px; height: auto;"> 
+                    </td>
+                        <td>
+                            <span class="float-right">
+                                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(course.id)">update</button>
+                                {{ ' ' }}
+                                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(course.id)">remove</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #loading>
+                <span>Loading courses..</span>
+            </ng-template>
+        </div>
+
+
+
+
+
+
