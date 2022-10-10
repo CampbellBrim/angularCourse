@@ -26,10 +26,7 @@ export class CoursesFormComponent {
 
   submitted = false;
 
-  // profileForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  // });
+
   
   constructor(private fb: FormBuilder, private service: CoursesService,
     // private modal: AlertModalService,
@@ -38,42 +35,9 @@ export class CoursesFormComponent {
     ) { }
   
   ngOnInit(): void {
-    // this.route.params.subscribe(
-    //   (params: any) => {
-    //     const id = params['id'];
-    //     console.log(id);
-    //     const course$ = this.service.loadByID(id);
-    //     course$.subscribe(course => {
-    //       this.updateForm(course);
-    //     })
-    //   }
-    // )
-    // this.route.params.pipe(
-    //   map((params: any) => params['id']),
-    //   switchMap(id => this.service.loadByID(id))
-    // ).subscribe(
-    //   (course) => this.updateForm(course))
-        // const id = params['id'];
-        // console.log(id);
-        // const course$ = this.service.loadByID(id);
-        // course$.subscribe(course => {
-          //   this.updateForm(course);
-          // })
-      
-  //   this.form = this.fb.group({
-  //     name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
-  //   })
-  // const course = this.route.snapshot.data['course'];
   
 }
-// updateForm(course: any) {
-//   this.form.patchValue({
-//     name: course.name,
-//     id: course.id,
-//     price: course.price,
-//     image: course.image
-//   })
-// }
+
 
   hasError(field: string) {
     // return this.form.get(field).errors;
@@ -82,21 +46,14 @@ export class CoursesFormComponent {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.form.value)
+    // console.log(this.form.value)
     if (this.form.valid) {
-      console.log('submit')
-      // this.service.save(this.form.value).subscribe(
-      //   success => {
-      //     alert('you did it!')
-      //   },
-      //   error => {console.error(error);}
-        
-      // );
+
       if (this.form.value.id) {
         // update logic
         this.service.update(this.form.value).subscribe(
             success => {
-          alert('you did it!')
+          alert('produto atualizado com sucesso!')
         },
         error => {
           alert(error);
@@ -105,9 +62,8 @@ export class CoursesFormComponent {
       } 
       else {
         this.service.create(this.form.value).subscribe(
-          success => console.log(success),
+          success => alert('produto criado com sucesso!'),
           error => console.error(error),
-          () => console.log('request complete')
         );
       }
 
@@ -116,7 +72,6 @@ export class CoursesFormComponent {
   onCancel() {
       this.submitted = false;
       this.form.reset();
-    // console.log('cancel)
     
   }
 

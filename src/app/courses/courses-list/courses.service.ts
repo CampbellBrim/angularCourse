@@ -19,7 +19,7 @@ export class CoursesService {
   list() {
     return this.http.get<any>(this.API).pipe(
       delay(1000),
-      tap(console.log)
+      tap()
     );
   }
 
@@ -45,7 +45,7 @@ export class CoursesService {
   }
 
   remove(id: any) {
-    console.log(id)
+    // console.log(id)
     return this.http.delete(`${this.API}/${id}`).pipe(take(1))
     // return this.http.delete(`${this.API}/${id}`).subscribe();
   }

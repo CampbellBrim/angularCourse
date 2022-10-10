@@ -10,11 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-
-  // courses: any;
-  // courses: Course[];
-
-  // courses$: Observable<Course[]>
   courses$: any;
   
   constructor(private service: CoursesService,
@@ -24,19 +19,9 @@ export class CoursesListComponent implements OnInit {
     ) { }
   
   ngOnInit(): any {
-    // this.service.list().subscribe(data => this.courses = data);
-    // this.service.list().subscribe(console.log);
+
     this.courses$ = this.service.list();
   }
-
-
-  // courses: Course = {
-  //     id: 0;
-  //     name: 'string'
-  //   }
-  
-  // cursos: any = [{id: 1, nome: "angular"}, {id: 2, nome: "react"}];
-
   onRefresh: any = () => {
     this.courses$ = this.service.list().pipe()
   }

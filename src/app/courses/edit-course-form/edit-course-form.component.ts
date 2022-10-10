@@ -14,27 +14,7 @@ import { CoursesService } from '../courses-list/courses.service';
 })
 export class EditCourseFormComponent implements OnInit {
 
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
-
-// }
-
-
-
-// @Component({
-//   selector: 'app-courses-form',
-//   templateUrl: './courses-form.component.html',
-//   styleUrls: ['./courses-form.component.css']
-// })
-// // export class CoursesFormComponent implements OnInit {
-// export class CoursesFormComponent {
-
-  // form: FormGroup;
-  // form: any;
   form = new FormGroup({
-    // name: new FormControl(),
     name: new FormControl(),
     id: new FormControl(),
     price: new FormControl(),
@@ -42,11 +22,6 @@ export class EditCourseFormComponent implements OnInit {
 }); 
 
   submitted = false;
-
-  // profileForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  // });
   
   constructor(private fb: FormBuilder, private service: CoursesService,
     // private modal: AlertModalService,
@@ -58,29 +33,12 @@ export class EditCourseFormComponent implements OnInit {
     this.route.params.subscribe(
       (params: any) => {
         const id = params['id'];
-        console.log(id);
         const course$ = this.service.loadByID(id);
         course$.subscribe(course => {
           this.updateForm(course);
         })
       }
     )
-    // this.route.params.pipe(
-    //   map((params: any) => params['id']),
-    //   switchMap(id => this.service.loadByID(id))
-    // ).subscribe(
-    //   (course) => this.updateForm(course))
-        // const id = params['id'];
-        // console.log(id);
-        // const course$ = this.service.loadByID(id);
-        // course$.subscribe(course => {
-          //   this.updateForm(course);
-          // })
-      
-  //   this.form = this.fb.group({
-  //     name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
-  //   })
-  // const course = this.route.snapshot.data['course'];
   
 }
 updateForm(course: any) {
@@ -101,19 +59,12 @@ updateForm(course: any) {
     this.submitted = true;
     console.log(this.form.value)
     if (this.form.valid) {
-      console.log('submit')
-      // this.service.save(this.form.value).subscribe(
-      //   success => {
-      //     alert('you did it!')
-      //   },
-      //   error => {console.error(error);}
-        
-      // );
+      
       if (this.form.value.id) {
         // update logic
         this.service.update(this.form.value).subscribe(
             success => {
-          alert('you did it!')
+          alert('produto atualizado com successo!')
         },
         error => {
           alert(error);
@@ -124,7 +75,7 @@ updateForm(course: any) {
         this.service.create(this.form.value).subscribe(
           success => console.log(success),
           error => console.error(error),
-          () => console.log('request complete')
+          // () => console.log('request complete')
         );
       }
 
