@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesListComponent } from './courses-list/courses-list.component';
+import { EditCourseFormComponent } from './edit-course-form/edit-course-form.component';
 
 
 @NgModule({
   declarations: [
-    CoursesListComponent
+    CoursesListComponent,
+    EditCourseFormComponent
   ],
   imports: [
     CommonModule,
     CoursesRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgOptimizedImage
   ]
 })
 export class CoursesModule { }

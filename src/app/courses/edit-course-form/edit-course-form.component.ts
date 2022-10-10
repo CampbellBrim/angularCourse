@@ -1,5 +1,6 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+// import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
  import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -7,12 +8,28 @@ import { map, switchMap } from 'rxjs';
 import { CoursesService } from '../courses-list/courses.service';
 
 @Component({
-  selector: 'app-courses-form',
-  templateUrl: './courses-form.component.html',
-  styleUrls: ['./courses-form.component.css']
+  selector: 'app-edit-course-form',
+  templateUrl: './edit-course-form.component.html',
+  styleUrls: ['./edit-course-form.component.css']
 })
-// export class CoursesFormComponent implements OnInit {
-export class CoursesFormComponent {
+export class EditCourseFormComponent implements OnInit {
+
+  // constructor() { }
+
+  // ngOnInit(): void {
+  // }
+
+// }
+
+
+
+// @Component({
+//   selector: 'app-courses-form',
+//   templateUrl: './courses-form.component.html',
+//   styleUrls: ['./courses-form.component.css']
+// })
+// // export class CoursesFormComponent implements OnInit {
+// export class CoursesFormComponent {
 
   // form: FormGroup;
   // form: any;
@@ -38,16 +55,16 @@ export class CoursesFormComponent {
     ) { }
   
   ngOnInit(): void {
-    // this.route.params.subscribe(
-    //   (params: any) => {
-    //     const id = params['id'];
-    //     console.log(id);
-    //     const course$ = this.service.loadByID(id);
-    //     course$.subscribe(course => {
-    //       this.updateForm(course);
-    //     })
-    //   }
-    // )
+    this.route.params.subscribe(
+      (params: any) => {
+        const id = params['id'];
+        console.log(id);
+        const course$ = this.service.loadByID(id);
+        course$.subscribe(course => {
+          this.updateForm(course);
+        })
+      }
+    )
     // this.route.params.pipe(
     //   map((params: any) => params['id']),
     //   switchMap(id => this.service.loadByID(id))
@@ -66,14 +83,14 @@ export class CoursesFormComponent {
   // const course = this.route.snapshot.data['course'];
   
 }
-// updateForm(course: any) {
-//   this.form.patchValue({
-//     name: course.name,
-//     id: course.id,
-//     price: course.price,
-//     image: course.image
-//   })
-// }
+updateForm(course: any) {
+  this.form.patchValue({
+    name: course.name,
+    id: course.id,
+    price: course.price,
+    image: course.image
+  })
+}
 
   hasError(field: string) {
     // return this.form.get(field).errors;

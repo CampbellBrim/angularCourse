@@ -3,6 +3,7 @@ import { CoursesFormComponent } from './courses-form/courses-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursesListComponent } from './courses-list/courses-list.component';
+import { EditCourseFormComponent } from './edit-course-form/edit-course-form.component';
 
 const routes: Routes = [
   { path: '', component: CoursesListComponent },
@@ -11,8 +12,7 @@ const routes: Routes = [
     course: CourseResolverGuard
   }
 },
-  
-  { path: 'edit/:id', component: CoursesFormComponent,
+  { path: 'edit/:id', component: EditCourseFormComponent,
     resolve: {
     course: CourseResolverGuard
   }
